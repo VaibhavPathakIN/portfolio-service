@@ -1,0 +1,50 @@
+Add new trades:
+
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"AAN\", \"date\": \"2021-03-01\", \"key\": \"BUY\", \"quantity\": \"200\", \"price\": \"200.210\"}" http://localhost:9090/trades/add
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"MFT\", \"date\": \"2021-03-11\", \"key\": \"SELL\", \"quantity\": \"50\", \"price\": \"100.130\"}" http://localhost:9090/trades/add
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"ABCD\", \"date\": \"2021-03-01\", \"key\": \"BUY\", \"quantity\": \"200\", \"price\": \"20.10\"}" http://localhost:9090/trades/add
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"XYZ\", \"date\": \"2021-03-12\", \"key\": \"SELL\", \"quantity\": \"200\", \"price\": \"300.240\"}" http://localhost:9090/trades/add
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"UHG\", \"date\": \"2021-03-13\", \"key\": \"BUY\", \"quantity\": \"200\", \"price\": \"200.190\"}" http://localhost:9090/trades/add
+
+Update the trades:
+
+curl -X PUT -H "Content-Type: application/json" -d "{\"stockName\": \"AAN\", \"date\": \"2020-03-11\", \"key\": \"BUY\", \"quantity\": \"500\", \"price\": \"200.210\"}" http://localhost:9090/trades/update/1
+curl -X PUT -H "Content-Type: application/json" -d "{\"stockName\": \"UGH\", \"date\": \"2020-03-01\", \"key\": \"SELL\", \"quantity\": \"100\", \"price\": \"200.210\"}" http://localhost:9090/trades/update/5
+curl -X PUT -H "Content-Type: application/json" -d "{\"stockName\": \"UHG\", \"date\": \"2021-03-30\", \"key\": \"SELL\", \"quantity\": \"200\", \"price\": \"200.210\"}" http://localhost:9090/trades/update/8
+
+
+Delete the trades
+curl -X DELETE http://localhost:9090/trades/delete/1
+curl -X DELETE http://localhost:9090/trades/delete/8
+
+View All the trades
+curl -X GET http://localhost:9090/trades/getAll
+
+---------------------------------------
+
+Portfolio
+
+Add new Portfolio
+
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"AAN\", \"avgBuyPrice\": \"12.054\", \"currentPrice\": \"10.1\", \"marketValue\": \"24745\", \"unrealizedReturns\": \"1032.210\", \"realizedReturns\": \"22.210\"}" http://localhost:9090/portfolio/add
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"MFT\", \"avgBuyPrice\": \"1200.054\", \"currentPrice\": \"1000.1\", \"marketValue\": \"24744145\", \"unrealizedReturns\": \"104032.210\", \"realizedReturns\": \"22204.210\"}" http://localhost:9090/portfolio/add
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"ABCD\", \"avgBuyPrice\": \"784.04\", \"currentPrice\": \"140.18\", \"marketValue\": \"241115\", \"unrealizedReturns\": \"1082.210\", \"realizedReturns\": \"32.210\"}" http://localhost:9090/portfolio/add
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"XYZ\", \"avgBuyPrice\": \"547.51\", \"currentPrice\": \"250.15\", \"marketValue\": \"241515\", \"unrealizedReturns\": \"1092.210\", \"realizedReturns\": \"42.210\"}" http://localhost:9090/portfolio/add
+
+
+Update the Portfolio
+
+curl -X PUT -H "Content-Type: application/json" -d "{\"stockName\": \"AAN\", \"avgBuyPrice\": \"1152.054\", \"currentPrice\": \"100.1\", \"marketValue\": \"24745\", \"unrealizedReturns\": \"1032.210\", \"realizedReturns\": \"22.210\"}" http://localhost:9090/portfolio/update/1
+curl -X PUT -H "Content-Type: application/json" -d "{\"stockName\": \"MFT\", \"avgBuyPrice\": \"1200.054\", \"currentPrice\": \"10281.1\", \"marketValue\": \"24744145\", \"unrealizedReturns\": \"104032.210\", \"realizedReturns\": \"2204.210\"}" http://localhost:9090/portfolio/update/2
+curl -X PUT -H "Content-Type: application/json" -d "{\"stockName\": \"ABC\", \"avgBuyPrice\": \"512.054\", \"currentPrice\": \"120.158\", \"marketValue\": \"241115\", \"unrealizedReturns\": \"1082.210\", \"realizedReturns\": \"32.210\"}" http://localhost:9090/portfolio/update/8
+
+
+Delete the portfolio
+curl -X DELETE http://localhost:9090/portfolio/delete/1
+curl -X DELETE http://localhost:9090/portfolio/delete/8
+
+View All portfolio
+curl -X GET http://localhost:9090/portfolio/getAll
+
+View the price of stock
+curl -X POST -H "Content-Type: application/json" -d "{\"stockName\": \"AAN\", \"date\": \"2021-03-02\"}" http://localhost:9090/portfolio/getPrice
