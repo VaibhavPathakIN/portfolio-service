@@ -18,10 +18,13 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class PortfolioService {
 
-	@Autowired
 	private PortfolioRepository portfolioRepository;
-	@Autowired
-	RestTemplate restTemplate;
+	private RestTemplate restTemplate;
+
+	public PortfolioService(@Autowired PortfolioRepository portfolioRepository, @Autowired RestTemplate restTemplate) {
+		this.portfolioRepository = portfolioRepository;
+		this.restTemplate = restTemplate;
+	}
 
 	private static final String url = "http://localhost:8080/api/get-resource-info";
 
@@ -71,12 +74,12 @@ public class PortfolioService {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<Map<String, Object>> entity = new HttpEntity<Map<String, Object>>(keyData, headers);
-		Map<String, Object> result =  restTemplate.exchange(url, HttpMethod.POST, entity, Map.class).getBody();
-		
-		if(result == null || result.isEmpty()) {
+		Map<String, Object> result = restTemplate.exchange(url, HttpMethod.POST, entity, Map.class).getBody();
+
+		if (result == null || result.isEmpty()) {
 			throw new Exception("No price info found");
 		}
-		
+
 		return result;
 	}
 

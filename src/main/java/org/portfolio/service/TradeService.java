@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class TradeService {
 	
-	@Autowired
 	private TradeRepository tradeRepository;
+	
+	public TradeService(@Autowired TradeRepository tradeRepository) {
+		this.tradeRepository = tradeRepository;
+	}
 	
 	public List<Trades> getRow() throws Exception{
 		return (List<Trades>) tradeRepository.findAll();
